@@ -11,8 +11,10 @@ let result = [];
 let preliminaryResult = {number: 0};
 
 function baseCalc() {
+    // Impartirea preliminara
     let dividing = parseInt(numberInput.number / baseNumber);
 
+    // Codul pentru bazele mai mari decat 2
     if (baseNumber > 2) {
         dividing;
         let multiplication = dividing * baseNumber;
@@ -21,6 +23,7 @@ function baseCalc() {
         numberInput.number = dividing;
     }
 
+    // Codul pentru binary
     else if (baseNumber === 2) {
         preliminaryResult.number = dividing;
         console.log(preliminaryResult.number + "asta este reszultatu !!!!!");
@@ -50,3 +53,4 @@ let finalResultNumber = Number(result.join(''));
 
 // console.log(finalResultNumber);
 console.log(result);
+console.log(finalResultNumber);
