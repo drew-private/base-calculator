@@ -1,34 +1,19 @@
-// const numberInput = 38;
-// const baseNumber = 2;
-//
-// let result = [];
-// let preliminaryResult = numberInput;
-//
-// function barosaneala() {
-//     for (i = 0; i < preliminaryResult; i++) {
-//         let division = parseInt(preliminaryResult / baseNumber);
-//         console.log(division);
-//         preliminaryResult = division;
-//         if (preliminaryResult%2 === 0) {
-//             result.unshift(0);
-//         } else {
-//             result.unshift(1);
-//         }
-//     }
-// }
-//
-// barosaneala();
-//
-// console.log(result);
-// console.log(preliminaryResult);
+const dropdownBtn = document.getElementById('triggerId');
 
-let smen = 7;
-let result = [];
-
-for(i = 0; i < smen; i/2 ) {
-    result.push(i);
+function changeBases(btn) {
+    dropdownBtn.innerText = btn.innerText;
 }
+// let value1 = document.getElementById('numberConv');
+// let value2 = document.getElementById('numberAdding');
 
-console.log(result);
+function mainCalc() {
 
+    let valueFirst = document.getElementById('numberConv');
+    let valueSecond = document.getElementById('numberAdding');
 
+    console.log(valueFirst.value);
+    console.log(valueSecond.value);
+
+    let result =+ parseFloat(valueFirst.value) + parseFloat(valueSecond.value);
+    console.log(result)
+}

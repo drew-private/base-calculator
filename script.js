@@ -1,8 +1,8 @@
-// const dropdownBtn = document.getElementById('triggerId');
-//
-// function changeBases(btn) {
-//     dropdownBtn.innerText = btn.innerText;
-// }
+const dropdownBtn = document.getElementById('triggerId');
+
+function changeBases(btn) {
+    dropdownBtn.innerText = btn.innerText;
+}
 
 const numberInput = {number: 38};
 const baseNumber = 8;

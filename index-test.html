@@ -36,6 +36,8 @@
                       <input type="number" value="10" disabled id="baseValue" class="inputElements">
                       <label for="numberConv" class="inputElements">The number that you want to convert</label>
                       <input type="number" value="" name="" id="numberConv" class="inputElements">
+                      <label for="numberAdding" class="inputElements">The number that you want to convert</label>
+                      <input type="number" value="" name="" id="numberAdding" class="inputElements">
 
                       <label for="baseDropdown" class="inputElements">Select the base to which you want to convert the number</label>
                       <div class="dropdown open inputElements" id="baseDropdown">
@@ -49,7 +51,7 @@
                               <button class="dropdown-item" value="16" id="base16" onclick="changeBases(this)">Base 16 (Hexadecimal)</button>
                           </div>
                       </div>
-                      <button type="submit" class="btn btn-success mt-3" onclick="baseCalc()">Convert</button>
+                      <button type="submit" class="btn btn-success mt-3" onclick="mainCalc();return false">Convert</button>
                   </div>
                   </form>
                   <div class="container-fluid bg-light mt-3 h-50 shadow-sm">
@@ -69,7 +71,7 @@
     </main>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="script.js"></script>
+<script src="test.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
