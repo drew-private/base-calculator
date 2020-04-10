@@ -1,19 +1,36 @@
-const dropdownBtn = document.getElementById('triggerId');
+// const dropdownBtn = document.getElementById('triggerId');
+//
+// function changeBases(btn) {
+//     dropdownBtn.innerText = btn.innerText;
+// }
+// // let value1 = document.getElementById('numberConv');
+// // let value2 = document.getElementById('numberAdding');
+//
+// function mainCalc() {
+//
+//     let valueFirst = document.getElementById('numberConv');
+//     let valueSecond = document.getElementById('numberAdding');
+//
+//     console.log(valueFirst.value);
+//     console.log(valueSecond.value);
+//
+//     let result =+ parseFloat(valueFirst.value) + parseFloat(valueSecond.value);
+//     console.log(result)
+// }
+let result = [];
 
-function changeBases(btn) {
-    dropdownBtn.innerText = btn.innerText;
+function binary_seq(value) {
+    var count = 0;
+    while(value > 1) {
+        value = Math.floor(value/2); // Update the value of `value`
+        result.unshift(value);
+        count++;
+        console.log(count)
+    }
+    return count; // Return the value of count
 }
-// let value1 = document.getElementById('numberConv');
-// let value2 = document.getElementById('numberAdding');
 
-function mainCalc() {
+binary_seq(1000);
 
-    let valueFirst = document.getElementById('numberConv');
-    let valueSecond = document.getElementById('numberAdding');
+console.log(result)
 
-    console.log(valueFirst.value);
-    console.log(valueSecond.value);
-
-    let result =+ parseFloat(valueFirst.value) + parseFloat(valueSecond.value);
-    console.log(result)
-}

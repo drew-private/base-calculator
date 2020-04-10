@@ -1,56 +1,74 @@
-const dropdownBtn = document.getElementById('triggerId');
+    //The section below gets the value of the 'Base' button on each click
+    const basesButtonSelect = document.getElementsByClassName('dropdown-item');
 
-function changeBases(btn) {
-    dropdownBtn.innerText = btn.innerText;
-}
+    let baseValue = {};
 
-const numberInput = {number: 38};
-const baseNumber = 8;
+    for (i = 0; i < basesButtonSelect.length; i++) {
+        let allBaseButtons = basesButtonSelect[i];
+        allBaseButtons.addEventListener('click', function () {
+            baseValue = this.value;
+        });
+    }
 
-let result = [];
-let preliminaryResult = {number: 0};
+    // Changing bases value on the display element
 
-function baseCalc() {
-    // Impartirea preliminara
-    let dividing = parseInt(numberInput.number / baseNumber);
+    const dropdownBtn = document.getElementById('triggerId');
+
+    function changeBases(btn) {
+        dropdownBtn.innerText = btn.innerText;
+    }
+
+    //Main function that runs on click
+
+    let finalSubmit = document.querySelector('button[type="submit"]').addEventListener('click', function () {
+
+    // Some initial variable declarations
+    let result = [];
+    let numberToConvert = document.getElementById('numberConv').value;
+    let numberInput = {};
+    numberInput = numberToConvert;
+
+    let preliminaryResult = [parseInt(numberInput)];
 
     // Codul pentru bazele mai mari decat 2
-    if (baseNumber > 2) {
-        dividing;
-        let multiplication = dividing * baseNumber;
-        let remainder = numberInput.number - multiplication;
-        result.unshift(remainder);
-        numberInput.number = dividing;
-    }
+
+    if (baseValue > 2) {
+        for (i = 0; i < numberInput; i++) {
+            let dividing = parseInt(numberInput / baseValue);
+            let multiplication = dividing * baseValue;
+            let remainder = numberInput - multiplication;
+            result.unshift(remainder);
+            numberInput = dividing;
+        }
 
     // Codul pentru binary
-    else if (baseNumber === 2) {
-        preliminaryResult.number = dividing;
-        console.log(preliminaryResult.number + "asta este reszultatu !!!!!");
-        for (i = 0; i <= numberInput.number; i++) {
-            let furtherDivision = parseInt(preliminaryResult.number / baseNumber);
-            // console.log(furtherDivision);
-            preliminaryResult.number = furtherDivision;
-            // console.log(preliminaryResult);
-            if (furtherDivision%2 === 0) {
-                result.unshift(0);
-            } else {
-                result.unshift(1);
+
+    } else {
+        function binary(value) {
+            var count = 0;
+            while (value > 1) {
+                value = Math.floor(value / 2);
+                preliminaryResult.unshift(value);
+                count++;
             }
+            return count;
         }
-    }
-};
+        binary(numberInput);
 
-if (baseNumber > 2) {
-    for (var i = 0; i < numberInput.number; i++) {
-        baseCalc();
-    }
-}
+        let evenOrOdd = preliminaryResult.map(function (num) {
+                if(num % 2 === 1) {
+                    result.push(1);
+                    return 1;
+                } else {
+                    result.push(0);
+                    return 0;
+                }
+            });
+        }
 
-baseCalc();
+    //Convert the number for the final result
 
-let finalResultNumber = Number(result.join(''));
-
-// console.log(finalResultNumber);
-console.log(result);
-console.log(finalResultNumber);
+        let finalResult = result.join('');
+        let resultElement = document.getElementById('result');
+        resultElement.innerHTML = finalResult;
+    });
