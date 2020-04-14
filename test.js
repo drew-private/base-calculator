@@ -17,20 +17,24 @@
 //     let result =+ parseFloat(valueFirst.value) + parseFloat(valueSecond.value);
 //     console.log(result)
 // }
-let result = [];
+// let result = [];
+//
+// function binary_seq(value) {
+//     var count = 0;
+//     while(value > 1) {
+//         value = Math.floor(value/2); // Update the value of `value`
+//         result.unshift(value);
+//         count++;
+//         console.log(count)
+//     }
+//     return count; // Return the value of count
+// }
+//
+// binary_seq(1000);
+//
+// console.log(result)
 
-function binary_seq(value) {
-    var count = 0;
-    while(value > 1) {
-        value = Math.floor(value/2); // Update the value of `value`
-        result.unshift(value);
-        count++;
-        console.log(count)
-    }
-    return count; // Return the value of count
-}
 
-binary_seq(1000);
+const reversedNum = num => parseFloat(num.toString().split('').reverse().join(''));
 
-console.log(result)
-
+console.log(reversedNum(43453));

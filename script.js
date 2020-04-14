@@ -25,13 +25,14 @@
     // Some initial variable declarations
     let result = [];
     let numberToConvert = document.getElementById('numberConv').value;
+    let selectedBaseValue = document.getElementById('selectedBaseValue').value;
     let numberInput = {};
     numberInput = numberToConvert;
 
     let preliminaryResult = [parseInt(numberInput)];
 
     // Codul pentru bazele mai mari decat 2
-
+if (selectedBaseValue === 10) {
     if (baseValue > 2) {
         for (i = 0; i < numberInput; i++) {
             let dividing = parseInt(numberInput / baseValue);
@@ -41,7 +42,7 @@
             numberInput = dividing;
         }
 
-    // Codul pentru binary
+        // Codul pentru binary
 
     } else {
         function binary(value) {
@@ -56,15 +57,36 @@
         binary(numberInput);
 
         let evenOrOdd = preliminaryResult.map(function (num) {
-                if(num % 2 === 1) {
-                    result.push(1);
-                    return 1;
-                } else {
-                    result.push(0);
-                    return 0;
-                }
-            });
-        }
+            if(num % 2 === 1) {
+                result.push(1);
+                return 1;
+            } else {
+                result.push(0);
+                return 0;
+            }
+        });
+    }
+} else if (selectedBaseValue < 2) {
+    alert('Choose a valid base number input between 2 and 16')
+} else {
+    let reversedNumbInput = [];
+    const reversedNum = () =>
+     parseFloat(numberInput.toString().split('').reverse().join(''));
+        reversedNumbInput.push(reversedNum());
+    const splitReverseNumb = reversedNumbInput.toString(10).split('');
+    console.log(splitReverseNumb);
+
+    for(i = 0; i < reversedNumbInput.length; i++) {
+        console.log(Math.pow(reversedNumbInput[i], (reversedNumbInput[i] - reversedNumbInput[i])))
+        console.log(reversedNumbInput);
+    }
+
+    // function powerAndConversion(num) {
+    //     Math.pow(reversedNumbInput[], )
+    // }
+
+
+}
 
     //Convert the number for the final result
 
