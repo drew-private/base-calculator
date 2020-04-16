@@ -31,8 +31,9 @@
 
     let preliminaryResult = [parseInt(numberInput)];
 
+    // TODO: add the code for the bases larger than 10 conversion
     // Codul pentru bazele mai mari decat 2
-if (selectedBaseValue === 10) {
+if (selectedBaseValue == 10) {
     if (baseValue > 2) {
         for (i = 0; i < numberInput; i++) {
             let dividing = parseInt(numberInput / baseValue);
@@ -69,23 +70,52 @@ if (selectedBaseValue === 10) {
 } else if (selectedBaseValue < 2) {
     alert('Choose a valid base number input between 2 and 16')
 } else {
-    let reversedNumbInput = [];
-    const reversedNum = () =>
-     parseFloat(numberInput.toString().split('').reverse().join(''));
-        reversedNumbInput.push(reversedNum());
-    const splitReverseNumb = reversedNumbInput.toString(10).split('');
-    console.log(splitReverseNumb);
-
-    for(i = 0; i < reversedNumbInput.length; i++) {
-        console.log(Math.pow(reversedNumbInput[i], (reversedNumbInput[i] - reversedNumbInput[i])))
-        console.log(reversedNumbInput);
+    function binaryCalc(value) {
+        var count = 0;
+        while (value > 1) {
+            value = Math.floor(value / 2);
+            preliminaryResult.unshift(value);
+            count++;
+        }
+        return count;
     }
+    binaryCalc(numberInput);
 
-    // function powerAndConversion(num) {
-    //     Math.pow(reversedNumbInput[], )
-    // }
+    let binaryConversion = [];
+
+    let evenOrOdd = preliminaryResult.map(function (num) {
+        if(num % 2 === 1) {
+            binaryConversion.unshift(1);
+            return 1;
+        } else {
+            binaryConversion.unshift(0);
+            return 0;
+        }
+    });
+
+        console.log(binaryConversion);
 
 
+
+    let finalizedArrayPow = function mainCalculation() {
+        let exponentArr = [];
+        let raisedBinary = [];
+        let pow = 2;
+        //Loop for calculating the exponent and raising 2* to a power from the exponent array
+
+        for (i = 0; i < binaryConversion.length; i++) {
+            exponentArr.push(i);
+            raisedBinary.push(Math.pow(pow, exponentArr[i]));
+        }
+
+        var newArr = binaryConversion.map((x, y) => {
+            return x * raisedBinary[y];
+        });
+
+        return newArr.reduce((a, b) => a + b, 0);
+    };
+
+    console.log(finalizedArrayPow());
 }
 
     //Convert the number for the final result
