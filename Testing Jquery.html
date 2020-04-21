@@ -7,14 +7,17 @@
 <body>
     <button type="button" class="dropdown-item" value="32">Sa moare jeana</button>
     <button type="button" class="dropdown-item" value="0">Sa moare mata</button>
+
+    <p id="mata"> This is some mother fucking shit forever and ever 890-780-8905,
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit 899.489.9758.
+    Doloribus illum laborum, magnam maiores (980)-343.8950 minima molestiae repellat velit!.
+    </p>
 </body>
 </html>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="test.js"></script>
 <script>
-    $(document).ready(function () {
-        $('.dropdown-item').on('click',function () {
-            console.log($(this).val());
-        })
-    });
+    let pTag = document.getElementById('mata');
+    console.log(pTag);
 </script>

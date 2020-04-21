@@ -34,52 +34,46 @@
 //
 // console.log(result)
 
-let arr = [2, 3, 5, 6, 7, 5];
-let basePow = 2;
-
-let finalizedArray = function mainCalculation() {
-    //Loop for calculating the exponent
-    let exponentArr = [];
-    let raisedBinary = [];
-
-    for (i = 0; i < arr.length; i++) {
-        exponentArr.push(i);
-        raisedBinary.push(Math.pow(basePow, exponentArr[i]));
-    }
-
-    //Loop for raising 2 to a power
-
-    // for (i = 0; i < arr.length; i++) {
-    //     raisedBinary.push(Math.pow(basePow, exponentArr[i]));
-    // }
-
-    //map the mofo with the new values-- Multiply with 2*
-
-    let newArr = arr.map((x, y) => {
-      return  x * raisedBinary[y];
-    });
-
-    return newArr;
-};
-
-console.log(finalizedArray());
-
-// for (i = 0; i < arr.length; i++) {
-//     newArr.push(i);
-// }
+// let arr = [2, 3, 5, 6, 7, 5];
+// let basePow = 2;
 //
-// console.log(newArr);
-// let newArr = arr.map(function(base, exponent) {
-//    return Math.pow(arr[base], exponentArr[exponent]);
-// });
-// console.log(newArr);
+// let finalizedArray = function mainCalculation() {
+//     let exponentArr = [];
+//     let raisedBinary = [];
+//
+//     //Loop for calculating the exponent and raising 2* to a power from the exponent array
+//
+//     for (i = 0; i < arr.length; i++) {
+//         exponentArr.push(i);
+//         raisedBinary.push(Math.pow(basePow, exponentArr[i]));
+//     }
+//
+//     let newArr = arr.map((x, y) => {
+//       return  x * raisedBinary[y];
+//     });
+//
+//     return newArr;
+// };
+//
+// console.log(finalizedArray());
 
-// let newArr = arr.map(x => {
-//         // var display = Math.pow(x, pow);
-//         var display = x**pow;
-//         console.log(pow);
-//         return display;
-// });
+        // var number = 1001010100011,
+        //     output = number.toString().match(/(\d+?)(?=(\d{3})+(?!\d)|$)/g);
+        //
+        // if (output[0].length < 3) {
+        //     var paddedArr = output[0].padStart(3, '0');
+        //     output.splice(0, 1, paddedArr)
+        // } else {
+        //     console.log('mata jughe pla')
+        // }
+        //
+        // console.log(output);
 
+let text = 'This is some mother fucking shit forever and ever 890-780-8905, ' +
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit 899.489.9758. ' +
+    'Doloribus illum laborum, magnam maiores (980)-343.8950 minima molestiae repellat velit!.';
 
-// // console.log(newArr + ' Asta este rezultatul de la array');
+// let search = text.search(/\w+/gi);
+let search = text.match(/\d{3}-\d{3}-\d{4}/g).length;
+
+console.log(search);
