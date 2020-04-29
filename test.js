@@ -71,9 +71,17 @@
 
 let text = 'This is some mother fucking shit forever and ever 890-780-8905, ' +
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit 899.489.9758. ' +
-    'Doloribus illum laborum, magnam maiores (980)-343.8950 minima molestiae repellat velit!.';
+    'Doloribus illum laborum, magnam maiores (980)-343.8950 minima molestiae repellat velit!.' +
+    'Burcu, bircu de 3 lei ridichiu!'+
+    'gigi.duru@gmail.com, mata.tactu+gigi@sughetipla.ro, fica@mikiriki.xyz, gica+rimba@likiriki.sugeti';
+
+let names = 'Gigi, Duru Miki, Riki Siki, Ciki Triki, Piki';
 
 // let search = text.search(/\w+/gi);
-let search = text.match(/\d{3}-\d{3}-\d{4}/g).length;
+// let search = text.match(/[\w.+]+@\w+\.\w+/g);
+let search = text.match(/\(?\d{3}\)?[.-]\d{3}[.-]\d{4}/g);
+
+let replace = names.replace(/(\w+),\s(\w+)/g, '$2 $1');
 
 console.log(search);
+console.log(replace);
