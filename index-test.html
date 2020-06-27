@@ -45,13 +45,13 @@
                                   data-toggle="dropdown" aria-haspopup="true"
                                   aria-expanded="false">
                            Bases </button>
-                          <div class="dropdown-menu w-100" aria-labelledby="triggerId">
+                          <div class="dropdown-menu w-100" aria-labelledby="triggerId" id="dropdownShit">
                               <button class="dropdown-item" value="2" id="base2" onclick="changeBases(this)">Base 2 (Binary)</button>
                               <button class="dropdown-item" value="8" id="base8" onclick="changeBases(this)">Base 8 (Octal)</button>
                               <button class="dropdown-item" value="16" id="base16" onclick="changeBases(this)">Base 16 (Hexadecimal)</button>
                           </div>
                       </div>
-                      <button type="submit" class="btn btn-success mt-3" onclick="mainCalc();return false">Convert</button>
+                      <button type="submit" class="btn btn-success mt-3" id="mainBtn" onclick="mainCalc();return false">Convert</button>
                   </div>
                   </form>
                   <div class="container-fluid bg-light mt-3 h-50 shadow-sm">
@@ -71,6 +71,16 @@
     </main>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script>
+        const mainForm = document.getElementById('dropdownShit')
+
+        for(let i = 0; i < 30; i++) {
+            let newElem = document.createElement("button");
+            newElem.setAttribute('class', 'dropdown-item');
+            newElem.innerText = i + ' Mata mare';
+            mainForm.appendChild(newElem);
+        }
+    </script>
 <script src="test.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

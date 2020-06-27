@@ -1,7 +1,7 @@
     //The section below gets the value of the 'Base' button on each click
     const basesButtonSelect = document.getElementsByClassName('dropdown-item');
 
-    let baseValue = {};
+    let baseValue = 0;
 
     for (i = 0; i < basesButtonSelect.length; i++) {
         let allBaseButtons = basesButtonSelect[i];
@@ -25,23 +25,28 @@
     // Some initial variable declarations
     let result = [];
     let numberToConvert = document.getElementById('numberConv').value;
-    let numberInput = {};
-    numberInput = numberToConvert;
 
-    let preliminaryResult = [parseInt(numberInput)];
+    let preliminaryResult = [parseInt(numberToConvert)];
 
     // Codul pentru bazele mai mari decat 2
 
-    if (baseValue > 2) {
-        for (i = 0; i < numberInput; i++) {
-            let dividing = parseInt(numberInput / baseValue);
+    if (baseValue > 2 && baseValue < 10) {
+        for (i = 0; i < numberToConvert; i++) {
+            let dividing = parseInt(numberToConvert / baseValue);
             let multiplication = dividing * baseValue;
-            let remainder = numberInput - multiplication;
+            let remainder = numberToConvert - multiplication;
             result.unshift(remainder);
-            numberInput = dividing;
+            if (numberToConvert > 1) {
+                numberToConvert = dividing;
+            } else {
+                result.unshift('1');
+            }
         }
 
     // Codul pentru binary
+
+    } else if(baseValue < 2) {
+        alert('Please select a base to convert in!')
 
     } else {
         function binary(value) {
@@ -53,7 +58,7 @@
             }
             return count;
         }
-        binary(numberInput);
+        binary(numberToConvert);
 
         let evenOrOdd = preliminaryResult.map(function (num) {
                 if(num % 2 === 1) {
@@ -67,7 +72,8 @@
         }
 
     //Convert the number for the final result
-
+    console.log(result);
+    console.log(baseValue)
         let finalResult = result.join('');
         let resultElement = document.getElementById('result');
         resultElement.innerHTML = finalResult;

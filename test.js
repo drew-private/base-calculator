@@ -17,6 +17,7 @@
 //     let result =+ parseFloat(valueFirst.value) + parseFloat(valueSecond.value);
 //     console.log(result)
 // }
+
 let result = [];
 
 function binary_seq(value) {
@@ -34,3 +35,10 @@ binary_seq(1000);
 
 console.log(result)
 
+let numberToConvert = document.getElementById('numberConv').value;
+let numberInput = {number: numberToConvert};
+
+
+const gigGuru = () => {
+    console.log(numberInput.number + 'Sa moare viata ta!!!!!!')
+}
