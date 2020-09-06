@@ -19,10 +19,9 @@
 }
 
 input {
-    font-family: "Noto Sans", sans-serif;
     font-weight: 600;
 }
 
-body {
-
+.btn-success {
+    background-color: #056674;
 }
