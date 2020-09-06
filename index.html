@@ -9,21 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        .inputElements {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        #result {
-            font-size: 2rem;
-            text-align: center;
-        }
-
-        #resultDiv {
-            word-wrap: break-word;
-        }
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="m-0">
     <main id="main">
@@ -36,24 +23,19 @@
                   </div>
                   <form id="main-form">
                   <div class="d-flex flex-column justify-content-center">
-                      <label for="baseValue" class="inputElements">Decimal base</label>
-                      <input type="number" value="10" disabled id="baseValue" class="inputElements">
+                      <label for="startingBaseValue" class="inputElements">Starting base</label>
+                      <input type="number" value="" id="startingBaseValue" class="inputElements" max="64" placeholder="Choose a base from 2 to 64">
                       <label for="numberConv" class="inputElements">The number that you want to convert</label>
-                      <input type="number" value="" name="" id="numberConv" class="inputElements">
-
+                      <input type="text" value="" name="" id="numberConv" class="inputElements" placeholder="Any integer">
                       <label for="baseDropdown" class="inputElements">Select the base to which you want to convert the number</label>
                       <div class="dropdown open inputElements" id="baseDropdown">
                           <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="triggerId"
                                   data-toggle="dropdown" aria-haspopup="true"
-                                  aria-expanded="false">
-                           Bases </button>
-                          <div class="dropdown-menu w-100" aria-labelledby="triggerId">
-                              <button type="button" class="dropdown-item" value="2" id="base2" onclick="changeBases(this)">Base 2 (Binary)</button>
-                              <button type="button" class="dropdown-item" value="8" id="base8" onclick="changeBases(this)">Base 8 (Octal)</button>
-                              <button type="button" class="dropdown-item" value="16" id="base16" onclick="changeBases(this)">Base 16 (Hexadecimal)</button>
+                                  aria-expanded="false"> Bases </button>
+                          <div class="dropdown-menu w-100" id="bases-dropdown-section" aria-labelledby="triggerId">
                           </div>
                       </div>
-                      <button type="submit" class="btn btn-success mt-3" onclick="return false">Convert</button>
+                      <button type="submit" class="btn btn-success mt-3" id="finalButton" onclick="return false">Convert</button>
                   </div>
                   </form>
                   <div class="container-fluid bg-light mt-3 h-50 shadow-sm">
