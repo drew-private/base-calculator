@@ -26,7 +26,7 @@
                       <label for="startingBaseValue" class="inputElements">Starting base</label>
                       <input type="number" value="" id="startingBaseValue" class="inputElements" max="64" placeholder="Choose a base from 2 to 64">
                       <label for="numberConv" class="inputElements">The number that you want to convert</label>
-                      <input type="text" value="" name="" id="numberConv" class="inputElements" placeholder="Any integer">
+                      <input type="text" value="" name="" id="numberConv" class="inputElements" placeholder="Any integer" onpaste="mainDigitCharValidation()">
                       <label for="baseDropdown" class="inputElements">Select the base to which you want to convert the number</label>
                       <div class="dropdown open inputElements" id="baseDropdown">
                           <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="triggerId"
