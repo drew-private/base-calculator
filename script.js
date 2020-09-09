@@ -96,12 +96,12 @@
             if (convertedNumberToString >= parseInt(startingBaseValue) && convertedNumberToString >= 10) {
                 numberForValidation.setAttribute('style', 'background-color: #ff4b5c; opacity: 0.8; color: black')
                 console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid character!');
-                // break
+                break
             } else if (convertedNumberToString >= parseInt(startingBaseValue) && convertedNumberToString < 10) {
                 numberForValidation.setAttribute('style', 'background-color: #ff4b5c; opacity: 0.8; color: black')
                 console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid number!');
-                // break
-            } else if (convertedNumberToString  < parseInt(startingBaseValue)) {
+                break
+            } else {
                 numberForValidation.setAttribute('style', 'background-color: #ffffff;')
             }
         }
@@ -115,14 +115,17 @@
     }
 
     numberForValidation.addEventListener("keyup", (event) => {
+
+        let regex = /^[a-z0-9\/+](?!\w)/gi;
+
         if (event.key === 'Backspace') {
             clearBrokenDownNumber()
             console.log(convertedNumber);
-        } else if (event.key === !'Backspace') {
-            console.log('mata mare')
-        } else {
+        }  else if (regex.test(event.key)) {
             mainDigitCharValidation()
-            console.log(convertedNumber, baseValue);
+            console.log(convertedNumber);
+        } else {
+            event.preventDefault();
         }
     });
 
@@ -194,23 +197,41 @@
             alert('Please fill out the missing numbers')
         }
     } else {
-        // mainDigitCharValidation();
 
         let numberForFurtherConversion = [];
 
         let convertToAnyBaseTroughBase10 = () => {
-            while (numberToConvert > 0)  {
-                let dividing =  parseInt(numberToConvert / baseValue);
+            const sumFunction = (accumulator, currentValue) => accumulator + currentValue;
+
+            for (let i = 0; i < convertedNumber.length; i++) {
+                raisedByOne.push(Math.pow(startingBaseValue, i));
+                numberForFurtherConversion.push(convertedNumber[i] * raisedByOne[i]);
+
+            }
+
+            let conversionToBase10Result = numberForFurtherConversion.reduce(sumFunction);
+            let toConvertFromBase10 = conversionToBase10Result;
+            let gigiDuru = [];
+            console.log(conversionToBase10Result);
+
+            while (toConvertFromBase10 > 0)  {
+                let dividing =  parseInt(toConvertFromBase10 / baseValue);
+                console.log(dividing)
                 let multiplication = dividing * baseValue;
-                let remainder = numberToConvert - multiplication;
+                let remainder = toConvertFromBase10 - multiplication;
                 let remainderDigitToLetter = Object.getOwnPropertyDescriptor(digits, remainder);
-                numberForFurtherConversion.unshift(remainderDigitToLetter.value)
-                numberToConvert = dividing;
+                gigiDuru.unshift(remainderDigitToLetter.value)
+                toConvertFromBase10 = dividing;
+            }
+            console.log(gigiDuru)
+            if (gigiDuru.join('') <= 0) {
+                resultElement.innerHTML = '0';
+            } else {
+                resultElement.innerHTML = gigiDuru.join('');
             }
         }
 
         convertToAnyBaseTroughBase10()
-        console.log(numberForFurtherConversion)
     }
 
     //Convert the number for the final result
