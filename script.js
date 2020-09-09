@@ -99,7 +99,7 @@
                 break
             } else if (convertedNumberToString >= parseInt(startingBaseValue) && convertedNumberToString < 10) {
                 numberForValidation.setAttribute('style', 'background-color: #ff4b5c; opacity: 0.8; color: black')
-                console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid number!');
+                console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid number!')
                 break
             } else {
                 numberForValidation.setAttribute('style', 'background-color: #ffffff;')
@@ -111,6 +111,7 @@
         convertedNumber.shift();
         if (numberToConvert === '') {
             convertedNumber = [];
+            numberForValidation.setAttribute('style', 'background-color: #ffffff;')
         }
     }
 
