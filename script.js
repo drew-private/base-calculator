@@ -69,6 +69,7 @@
     let getBaseAndNumberValues = () => {
         document.getElementById('numberConv').addEventListener('input', () => {
             numberToConvert = numberForValidation.value
+            console.log(numberToConvert + " Number to convert")
         })
 
         document.getElementById('startingBaseValue').addEventListener('input', () => {
