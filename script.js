@@ -116,19 +116,22 @@
         }
     }
 
-    numberForValidation.addEventListener("keyup", (event) => {
-
-        let regex = /^[a-z0-9\/+](?!\w)/gi;
-
-        if (event.key === 'Backspace') {
-            clearBrokenDownNumber()
-            console.log(convertedNumber);
-        }  else if (regex.test(event.key)) {
+    numberForValidation.addEventListener("change", (event) => {
+        if (event) {
+            convertedNumber = []    ;
             mainDigitCharValidation()
-            console.log(convertedNumber);
-        } else {
-            event.preventDefault();
         }
+        // let regex = /^[a-z0-9\/+](?!\w)/gi;
+        //
+        // if (event.key === 'Backspace') {
+        //     clearBrokenDownNumber()
+        //     console.log(convertedNumber);
+        // }  else if (regex.test(event.key)) {
+        //     mainDigitCharValidation()
+        //     console.log(convertedNumber);
+        // } else {
+        //     event.preventDefault();
+        // }
     });
 
     //Main function that runs on click
