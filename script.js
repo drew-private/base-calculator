@@ -83,10 +83,17 @@
 
         let brokenDownNumber = Array.from(numberToConvert.toString()).map(String).reverse();
 
+        console.log(brokenDownNumber);
+
         function getKeyByValue(object, value) {
             return Object.keys(object).find(key => object[key] === value);
         }
-        convertedNumber.unshift(getKeyByValue(digits, ...brokenDownNumber))
+
+        for (let i = 0; i < brokenDownNumber.length; i++) {
+            convertedNumber.push(getKeyByValue(digits, brokenDownNumber[i]))
+        }
+
+        console.log(convertedNumber);
 
         for (let i = 0; i < numberToConvert.length; i++) {
 
@@ -116,22 +123,16 @@
         }
     }
 
-    numberForValidation.addEventListener("change", (event) => {
-        if (event) {
-            convertedNumber = []    ;
+    numberForValidation.addEventListener("keyup", (event) => {
+
+        let regex = /^[a-z0-9\/+](?!\w)/gi;
+
+        if (regex.test(event.key)) {
+            convertedNumber = [];
             mainDigitCharValidation()
+        } else {
+            event.preventDefault();
         }
-        // let regex = /^[a-z0-9\/+](?!\w)/gi;
-        //
-        // if (event.key === 'Backspace') {
-        //     clearBrokenDownNumber()
-        //     console.log(convertedNumber);
-        // }  else if (regex.test(event.key)) {
-        //     mainDigitCharValidation()
-        //     console.log(convertedNumber);
-        // } else {
-        //     event.preventDefault();
-        // }
     });
 
     //Main function that runs on click
