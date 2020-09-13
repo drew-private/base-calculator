@@ -45,7 +45,7 @@
             let allBaseButtons = basesButtonSelect[i];
             allBaseButtons.addEventListener('click', function () {
                 baseValue = this.value;
-                console.log(baseValue);
+                // console.log(baseValue);
             });
         }
     }
@@ -70,10 +70,15 @@
         document.getElementById('numberConv').addEventListener('input', () => {
             numberToConvert = numberForValidation.value
             console.log(numberToConvert + " Number to convert")
+            if (numberToConvert === '') {
+                numberForValidation.setAttribute('style', 'background-color: #ffffff;')
+            }
         })
 
         document.getElementById('startingBaseValue').addEventListener('input', () => {
             startingBaseValue = document.getElementById('startingBaseValue').value
+            convertedNumber = [];
+            mainDigitCharValidation();
         })
     }
 
@@ -82,8 +87,6 @@
     let mainDigitCharValidation = () => {
 
         let brokenDownNumber = Array.from(numberToConvert.toString()).map(String).reverse();
-
-        console.log(brokenDownNumber);
 
         function getKeyByValue(object, value) {
             return Object.keys(object).find(key => object[key] === value);
@@ -103,23 +106,15 @@
 
             if (convertedNumberToString >= parseInt(startingBaseValue) && convertedNumberToString >= 10) {
                 numberForValidation.setAttribute('style', 'background-color: #ff4b5c; opacity: 0.8; color: black')
-                console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid character!');
+                // console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid character!');
                 break
             } else if (convertedNumberToString >= parseInt(startingBaseValue) && convertedNumberToString < 10) {
                 numberForValidation.setAttribute('style', 'background-color: #ff4b5c; opacity: 0.8; color: black')
-                console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid number!')
+                // console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid number!')
                 break
             } else {
                 numberForValidation.setAttribute('style', 'background-color: #ffffff;')
             }
-        }
-    }
-
-    function clearBrokenDownNumber() {
-        convertedNumber.shift();
-        if (numberToConvert === '') {
-            convertedNumber = [];
-            numberForValidation.setAttribute('style', 'background-color: #ffffff;')
         }
     }
 
@@ -128,6 +123,9 @@
         let regex = /^[a-z0-9\/+](?!\w)/gi;
 
         if (regex.test(event.key)) {
+            convertedNumber = [];
+            mainDigitCharValidation()
+        } else if (event.key === 'Backspace') {
             convertedNumber = [];
             mainDigitCharValidation()
         } else {
@@ -173,14 +171,12 @@
             for (let i = 0; i < convertedNumber.length; i++) {
                 raisedByOne.push(Math.pow(startingBaseValue, i));
                 result.push(convertedNumber[i] * raisedByOne[i]);
-                console.log(raisedByOne);
+                // console.log(raisedByOne);
             }
-            console.log(result)
 
             let conversionResult = result.reduce(sumFunction);
 
-            console.log(conversionResult + ' asta e rezultatul')
-
+            // console.log(conversionResult + ' asta e rezultatul')
 
             if (conversionResult <= 0) {
                 resultElement.innerHTML = '0';
@@ -212,28 +208,25 @@
             for (let i = 0; i < convertedNumber.length; i++) {
                 raisedByOne.push(Math.pow(startingBaseValue, i));
                 numberForFurtherConversion.push(convertedNumber[i] * raisedByOne[i]);
-
             }
 
-            let conversionToBase10Result = numberForFurtherConversion.reduce(sumFunction);
-            let toConvertFromBase10 = conversionToBase10Result;
-            let gigiDuru = [];
-            console.log(conversionToBase10Result);
+            let toConvertFromBase10 = numberForFurtherConversion.reduce(sumFunction);
+            let multipleConvResult = [];
+            // console.log(conversionToBase10Result);
 
             while (toConvertFromBase10 > 0)  {
                 let dividing =  parseInt(toConvertFromBase10 / baseValue);
-                console.log(dividing)
                 let multiplication = dividing * baseValue;
                 let remainder = toConvertFromBase10 - multiplication;
                 let remainderDigitToLetter = Object.getOwnPropertyDescriptor(digits, remainder);
-                gigiDuru.unshift(remainderDigitToLetter.value)
+                multipleConvResult.unshift(remainderDigitToLetter.value)
                 toConvertFromBase10 = dividing;
             }
-            console.log(gigiDuru)
-            if (gigiDuru.join('') <= 0) {
+            // console.log(multipleConvResult)
+            if (multipleConvResult.join('') <= 0) {
                 resultElement.innerHTML = '0';
             } else {
-                resultElement.innerHTML = gigiDuru.join('');
+                resultElement.innerHTML = multipleConvResult.join('');
             }
         }
 
