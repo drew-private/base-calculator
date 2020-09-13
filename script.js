@@ -108,11 +108,11 @@
             // console.log(brokenDownNumber + 'this is a broken down number')
 
             if (convertedNumberToString >= parseInt(startingBaseValue) && convertedNumberToString >= 10) {
-                numberForValidation.setAttribute('style', 'background-color: #ff4b5c; opacity: 0.8; color: black')
+                numberForValidation.setAttribute('style', 'background-color: #ff4b5c; opacity: 0.8; color: black;')
                 // console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid character!');
                 break
             } else if (convertedNumberToString >= parseInt(startingBaseValue) && convertedNumberToString < 10) {
-                numberForValidation.setAttribute('style', 'background-color: #ff4b5c; opacity: 0.8; color: black')
+                numberForValidation.setAttribute('style', 'background-color: #ff4b5c; opacity: 0.8; color: black;')
                 // console.log(valueNumb.value + ' is not a base ' + startingBaseValue + ' valid number!')
                 break
             } else {
