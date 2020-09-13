@@ -1,3 +1,4 @@
+    // Function for creating a new base dropdown element
     let createBaseDropdownEl = () => {
         const mainBaseDropdown = document.getElementById('bases-dropdown-section');
         const basesButton = document.getElementById('triggerId');
@@ -69,7 +70,7 @@
     let getBaseAndNumberValues = () => {
         document.getElementById('numberConv').addEventListener('input', () => {
             numberToConvert = numberForValidation.value
-            console.log(numberToConvert + " Number to convert")
+            // console.log(numberToConvert + " Number to convert")
             if (numberToConvert === '') {
                 numberForValidation.setAttribute('style', 'background-color: #ffffff;')
             }
@@ -84,6 +85,8 @@
 
     window.addEventListener('load', getBaseAndNumberValues)
 
+    // Main validation function
+
     let mainDigitCharValidation = () => {
 
         let brokenDownNumber = Array.from(numberToConvert.toString()).map(String).reverse();
@@ -96,7 +99,7 @@
             convertedNumber.push(getKeyByValue(digits, brokenDownNumber[i]))
         }
 
-        console.log(convertedNumber);
+        // console.log(convertedNumber);
 
         for (let i = 0; i < numberToConvert.length; i++) {
 
@@ -117,6 +120,8 @@
             }
         }
     }
+
+    // Event listener for validation on keyup
 
     numberForValidation.addEventListener("keyup", (event) => {
 
@@ -162,6 +167,8 @@
         }
         conversionFromBase10();
 
+    // Code for converting to base 10 from any base
+
     } else if (startingBaseValue != 10 && baseValue == 10) {
 
         let conversionToBase10 = () => {
@@ -188,6 +195,8 @@
 
         conversionToBase10()
 
+    // Code for handling no input before submission
+
     } else if (startingBaseValue === '' || numberToConvert === '' || baseValue === 0) {
         if (startingBaseValue === '') {
             alert('Please insert a starting base number')
@@ -198,6 +207,9 @@
         } else {
             alert('Please fill out the missing numbers')
         }
+
+    // The code for converting any base trough base 10
+
     } else {
 
         let numberForFurtherConversion = [];
