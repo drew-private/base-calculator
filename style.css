@@ -2,3 +2,27 @@
     margin-bottom: 1rem;
     font-size: 1.2rem;
 }
+
+#result {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#resultDiv {
+    word-wrap: break-word;
+}
+
+#bases-dropdown-section {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+input {
+    font-weight: 600;
+}
+
+.btn-success {
+    background-color: #056674;
+}
+
